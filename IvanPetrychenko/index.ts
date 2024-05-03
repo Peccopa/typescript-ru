@@ -10,29 +10,66 @@
 //   }
 // }
 
-let salary: number;
-salary = 5000;
+// let salary: number;
+// salary = 5000;
 
-const userData =
-  '{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}';
+// const userData =
+//   '{"isBirthdayData": true, "ageData": 40, "userNameData": "John"}';
 
-const userObj: {
+// const userObj: {
+//   isBirthdayData: boolean;
+//   ageData: number;
+//   userNameData: string;
+// } = JSON.parse(userData);
+// console.log(userObj);
+
+const userData = {
+  isBirthdayData: true,
+  ageData: 40,
+  userNameData: 'John',
+  messages: {
+    error: 'Error',
+  },
+};
+
+const createError = (msg: string): never => {
+  throw new Error('msg');
+};
+
+const logBrtMsg = ({
+  isBirthdayData,
+  userNameData,
+  ageData,
+  messages: { error },
+}: {
   isBirthdayData: boolean;
-  ageData: number;
   userNameData: string;
-} = JSON.parse(userData);
-console.log(userObj);
-
-const logBrtMsg = (
-  isBirthday: boolean,
-  userName: string,
-  age: number
-): string => {
-  if (isBirthday) {
-    return `Congrats ${userName}, age: ${age + 1}`;
+  ageData: number;
+  messages: { error: string };
+}): string => {
+  if (isBirthdayData) {
+    return `Congrats ${userNameData}, age: ${ageData + 1}`;
   } else {
-    return 'Error';
+    return createError(error);
   }
 };
 
-// logBrtMsg(isBirthdayData, userNameData, ageData);
+console.log(logBrtMsg(userData));
+
+const departments: string[] = ['dev', 'design', 'marketing'];
+const department = departments[0];
+departments.push('sales');
+const report = departments
+  .filter((d: string) => d !== 'dev')
+  .map((d: string) => `${d} - done`);
+
+console.log(report);
+console.log(departments);
+
+const nums: number[][] = [
+  [1, 2, 3],
+  [1, 2, 3],
+];
+
+const [first, second] = report;
+console.log(first, second);
