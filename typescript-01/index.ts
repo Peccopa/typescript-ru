@@ -1,18 +1,19 @@
-const isBirthdayData: boolean = true;
-const ageData: number = 40;
-const userNameData: string = 'John';
+const test: null = null;
+const test2: any = null;
+// const test3: string = null;
+// const test4: number = null;
+const test5: undefined = undefined;
+const test6: any = undefined;
+// const test7: string = undefined;
 
-const createError = (msg: string): never => {
-  throw new Error(msg);
-};
-
-function logBrtMsg(isBirthday: boolean, userName: string, age: number): string {
-  if (isBirthday) {
-    return `Congrats ${userName.toUpperCase()}, age: ${age + 1}`;
-  } else if (!isBirthday) {
-    return 'Too bad!';
+function getRandomData() {
+  if (Math.random() < 0.5) {
+    return null;
+  } else {
+    return '   Some data   ';
   }
-  return createError('Error');
 }
 
-console.log(logBrtMsg(isBirthdayData, userNameData, ageData));
+const data = getRandomData();
+const trimmedData = data?.trim();
+console.log(trimmedData);
