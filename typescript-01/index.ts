@@ -34,3 +34,19 @@ function logBrtMsg({
 }
 
 console.log(logBrtMsg(userData));
+
+const departments: string[] = ['dev', 'design', 'marketing'];
+const department: string = departments[0];
+departments.push('sales');
+const report: string[] = departments
+  .filter((dep: string) => dep !== 'dev')
+  .map((dep: string) => `${dep} - done!`);
+console.log(report);
+
+const nums: number[][] = [
+  [3, 5, 6],
+  [3, 5, 6],
+];
+
+const [first] = report;
+console.log(first);
