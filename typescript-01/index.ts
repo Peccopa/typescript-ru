@@ -1,52 +1,48 @@
-const isBirthdayData: boolean = true;
-const ageData: number = 40;
-const userNameData: string = 'John';
+const message: string | number = 4;
+const messages: string[] | number[] = ['a', 'b'];
 
-const userData = {
-  isBirthdayData: true,
-  ageData: 40,
-  userNameData: 'John',
-  messages: {
-    error: 'Error',
-  },
-};
+// function printMsg(msg: string | number): void {
+//   if (typeof msg === 'string') {
+//     console.log(msg.toUpperCase());
+//   } else {
+//     console.log(msg.toExponential());
+//   }
+// }
 
-const createError = (msg: string): never => {
-  throw new Error(msg);
-};
-
-function logBrtMsg({
-  isBirthdayData,
-  userNameData,
-  ageData,
-  messages: { error: error },
-}: {
-  isBirthdayData: boolean;
-  userNameData: string;
-  ageData: number;
-  messages: { error: string };
-}): string {
-  if (isBirthdayData) {
-    return `Congrats ${userNameData.toUpperCase()}, age: ${ageData + 1}`;
+function printMsg(msg: string[] | number | boolean): void {
+  if (Array.isArray(msg)) {
+    msg.forEach((m) => console.log(m));
+  } else if (typeof msg === 'number') {
+    console.log(msg.toFixed());
   } else {
-    return createError(error);
+    console.log(msg);
   }
 }
 
-console.log(logBrtMsg(userData));
+printMsg(5);
 
-const departments: string[] = ['dev', 'design', 'marketing'];
-const department: string = departments[0];
-departments.push('sales');
-const report: string[] = departments
-  .filter((dep: string) => dep !== 'dev')
-  .map((dep: string) => `${dep} - done!`);
-console.log(report);
+const printReadings1 = (a: string | number, b: number | boolean): void => {
+  if (a === b) {
+    console.log(a, b);
+  }
+};
 
-const nums: number[][] = [
-  [3, 5, 6],
-  [3, 5, 6],
-];
+const printReadings2 = (a: string | number[]): void => {
+  console.log(a.slice(1, 3));
+};
 
-const [first] = report;
-console.log(first);
+function checkReadings(readings: { system: number } | { user: number }): void {
+  if ('system' in readings) {
+    console.log(readings.system);
+  } else {
+    console.log(readings.user);
+  }
+}
+
+function logValue(x: string | Date) {
+  if (x instanceof Date) {
+    console.log(x.getDate());
+  } else {
+    console.log(x.trim());
+  }
+}
