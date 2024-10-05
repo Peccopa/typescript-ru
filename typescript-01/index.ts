@@ -1,48 +1,37 @@
-const message: string | number = 4;
-const messages: string[] | number[] = ['a', 'b'];
+// let msg: 'Hello' = 'Hello';
+// msg = 'Hello';
 
-// function printMsg(msg: string | number): void {
-//   if (typeof msg === 'string') {
-//     console.log(msg.toUpperCase());
+// const port3000: number = 3000;
+// const port3001: number = 3001;
+
+// function startServer(
+//   protocol: 'http' | 'https',
+//   port: 3000 | 3001
+// ): 'Server started' {
+//   if (port === port3000 || port === port3001) {
+//     console.log(`Server started on ${protocol}://server:${port}`);
 //   } else {
-//     console.log(msg.toExponential());
+//     console.error('Invalid port');
 //   }
+//   return 'Server started';
 // }
+// startServer('https', 3000);
 
-function printMsg(msg: string[] | number | boolean): void {
-  if (Array.isArray(msg)) {
-    msg.forEach((m) => console.log(m));
-  } else if (typeof msg === 'number') {
-    console.log(msg.toFixed());
+function createAnimation(
+  id: string | number,
+  animName: string,
+  timingFunc: 'ease' | 'ease-out' | 'ease-in' | 'ease-in-out' = 'ease',
+  duration: number,
+  iterCount: 'infinite' | number
+): void {
+  // const elem = document.querySelector(`#${id}`) as HTMLElement;
+  const elem = { style: { animation: '' } };
+  if (elem) {
+    console.log(`${animName} ${timingFunc} ${duration} ${iterCount}`);
+    elem.style.animation = `${animName} ${timingFunc} ${duration} ${iterCount}`;
   } else {
-    console.log(msg);
+    console.log('Elem is ' + elem);
   }
 }
 
-printMsg(5);
-
-const printReadings1 = (a: string | number, b: number | boolean): void => {
-  if (a === b) {
-    console.log(a, b);
-  }
-};
-
-const printReadings2 = (a: string | number[]): void => {
-  console.log(a.slice(1, 3));
-};
-
-function checkReadings(readings: { system: number } | { user: number }): void {
-  if ('system' in readings) {
-    console.log(readings.system);
-  } else {
-    console.log(readings.user);
-  }
-}
-
-function logValue(x: string | Date) {
-  if (x instanceof Date) {
-    console.log(x.getDate());
-  } else {
-    console.log(x.trim());
-  }
-}
+createAnimation('id', 'fade', 'ease-in-out', 4, 100);
