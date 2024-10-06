@@ -1,9 +1,15 @@
-var isBirthdayData = true;
-var ageData = 40;
-var userNameData = 'John';
-function logBrtMsg(isBirthday, userName, age) {
-    if (isBirthday) {
-        console.log("Congrats ".concat(userName.toUpperCase(), ", age ").concat(age + 1));
+// let msg: 'Hello' = 'Hello';
+// msg = 'Hello';
+function createAnimation(id, animName, timingFunc, duration, iterCount) {
+    if (timingFunc === void 0) { timingFunc = 'ease'; }
+    // const elem = document.querySelector(`#${id}`) as HTMLElement;
+    var elem = { style: { animation: '' } };
+    if (elem) {
+        console.log("".concat(animName, " ").concat(timingFunc, " ").concat(duration, " ").concat(iterCount));
+        elem.style.animation = "".concat(animName, " ").concat(timingFunc, " ").concat(duration, " ").concat(iterCount);
+    }
+    else {
+        console.log('Elem is ' + elem);
     }
 }
-logBrtMsg(isBirthdayData, userNameData, ageData);
+createAnimation('id', 'fade', 'ease-in-out', 4, 100);
