@@ -1,15 +1,18 @@
-// let msg: 'Hello' = 'Hello';
-// msg = 'Hello';
-function createAnimation(id, animName, timingFunc, duration, iterCount) {
-    if (timingFunc === void 0) { timingFunc = 'ease'; }
-    // const elem = document.querySelector(`#${id}`) as HTMLElement;
-    var elem = { style: { animation: '' } };
-    if (elem) {
-        console.log("".concat(animName, " ").concat(timingFunc, " ").concat(duration, " ").concat(iterCount));
-        elem.style.animation = "".concat(animName, " ").concat(timingFunc, " ").concat(duration, " ").concat(iterCount);
-    }
-    else {
-        console.log('Elem is ' + elem);
-    }
-}
-createAnimation('id', 'fade', 'ease-in-out', 4, 100);
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const url = 'https://jsonplaceholder.typicode.com/todos/1';
+// fetch(url)
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
+const axios_1 = __importDefault(require("axios"));
+axios_1.default.get(url).then((response) => {
+    const { id, title, completed } = response.data;
+    logTodo(id, title, completed);
+});
+const logTodo = (id, title, completed) => {
+    console.log(`ID is "${id}", ${title}, ${completed}`);
+};
+//# sourceMappingURL=index.js.map
