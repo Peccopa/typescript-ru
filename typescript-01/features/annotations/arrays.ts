@@ -14,3 +14,7 @@ const color2_2 = colors2.pop();
 colors2.map((color: string): string => {
   return color.toUpperCase();
 });
+
+//Flexible types
+const importantDates: (Date | string)[] = [new Date(), '2025-11-11'];
+importantDates.push('12-12-12');
