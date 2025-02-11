@@ -5,6 +5,9 @@ const url = 'https://jsonplaceholder.typicode.com/todos/1';
 //   .then((json) => console.log(json));
 
 import axios from 'axios';
+// import faker from 'faker';
+// console.log(faker);
+
 // axios.get(url).then((response) => {
 //   console.log(response.data);
 // });
