@@ -1,29 +1,36 @@
 {
   // type Config = { protocol: 'http' | 'https'; port: 3000 | 3001 };
 
-  interface Config {
-    protocol: 'http' | 'https';
+  type TProtocol = 'http' | 'https';
+
+  interface IConfig {
+    protocol: TProtocol;
     port: 3000 | 3001;
     log: (msg: string) => void;
   }
 
+  interface IConfig {
+    data: Date;
+  }
+
   // type Role = { role: string };
 
-  interface Role {
+  interface IRole {
     role: string;
   }
 
   // type ConfigWithRole = Config & Role;
-  interface ConfigWithRole extends Config, Role {}
+  interface IConfigWithRole extends IConfig, IRole {}
 
-  const serverConfig: ConfigWithRole = {
+  const serverConfig: IConfigWithRole = {
     protocol: 'https',
     port: 3001,
     role: 'admin',
+    data: new Date(),
     log: (msg: string): void => console.log(msg),
   };
 
-  // const backupConfig: ConfigWithRole = {
+  // const backupConfig: IConfigWithRole = {
   //   protocol: 'https',
   //   port: 3000,
   //   role: 'sysadmin',
@@ -45,11 +52,11 @@
   };
   startServer(serverConfig.protocol, serverConfig.port, serverConfig.log);
 
-  interface Styles {
+  interface IStyles {
     [key: string]: string;
   }
 
-  const styles: Styles = {
+  const styles: IStyles = {
     position: 'absolute',
     top: '20px',
     left: '50px',
@@ -66,7 +73,7 @@
     port: 3000,
   };
 
-  interface BasicConfig {
+  interface IBasicConfig {
     protocol: string;
     port: number;
   }
